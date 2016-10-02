@@ -1,1 +1,63 @@
-<h1>Golo.IO</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!--
+  <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+  -->
+  <title>Golo.IO 201N</title>
+  <!--
+    http://primercss.io/
+  -->
+  <link rel="stylesheet" type="text/css" href="css/primer.css">
+  <style>
+    .emoji {
+      width: 1.5em;
+      height: 1.5em;
+      display: inline-block;
+      margin-bottom: -0.25em;
+    }
+  </style>
+</head>
+<body style="padding-top: 5%">
+
+  <div class="container">
+    <div class="blankslate blankslate-large blankslate-clean-background" id="title">
+      <!-- title.md -->
+    </div>
+  </div>
+  <div class="container">
+    <!-- contents-fr.md -->
+    <div class=".lead" id="contents-fr"></div>
+  </div>
+
+  <script src="vendors/showdown.min.js"></script>
+  <script src="vendors/jquery-3.1.1.min.js"></script>
+  <script src="emojify/js/emojify.min.js"></script>
+  <script>
+  /*
+    - http://hassankhan.me/emojify.js/
+    - http://www.webpagefx.com/tools/emoji-cheat-sheet/
+   */
+  emojify.setConfig({
+    img_dir: 'emojify/images/basic',  // Directory for emoji images
+  });
+
+  var converter = new showdown.Converter();
+
+  $(() => {
+
+    $.get("/title.md").then(mdtext => {
+      $("#title").html(converter.makeHtml(mdtext));
+
+      emojify.run();
+
+      $.get("/contents-fr.md").then(mdtext => {
+        $("#contents-fr").html(converter.makeHtml(mdtext));
+        emojify.run();
+      });
+    })
+  })
+  </script>
+</body>
+</html>

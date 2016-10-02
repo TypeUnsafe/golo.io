@@ -1,0 +1,15 @@
+[
+  {
+    "speaker":"YOUR_GITHUB_HANDLE",
+    "talks":[
+      "FILE_NAME_001.md"
+    ]
+  },
+  {
+    "speaker":"k33g",
+    "talks":[
+      "INTRO.md"
+    ]
+  }
+
+]
