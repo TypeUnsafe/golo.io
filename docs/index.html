@@ -47,12 +47,12 @@
 
   $(() => {
 
-    $.get("/title.md").then(mdtext => {
+    $.get("title.md").then(mdtext => {
       $("#title").html(converter.makeHtml(mdtext));
 
       emojify.run();
 
-      $.get("/contents-fr.md").then(mdtext => {
+      $.get("contents-fr.md").then(mdtext => {
         $("#contents-fr").html(converter.makeHtml(mdtext));
         emojify.run();
       });
